@@ -58,7 +58,7 @@ module.exports = State.extend({
   props:{
     serverError:'serverError',
     alerts:'alerts',
-    xhr:'object'
+    xhr:'object',
   },
   initialize:function(){
     var self = this;
@@ -66,7 +66,7 @@ module.exports = State.extend({
       var error = self.serverError;
       var message = (error.details&&error.details.join('. ')) || error.message ;
       new AlertView({
-        message:message,
+        message:message||undefined,
         type:'alert-warning',
         title:'Something went wrong...'
       });
@@ -99,29 +99,29 @@ module.exports = State.extend({
   },
   success:function(title,message){
     new AlertView({
-      title:title,
-      message:message,
+      title:title||undefined,
+      message:message||undefined,
       type:'alert-success',
     });
   },
   danger:function(title,message){
     new AlertView({
-      title:title,
-      message:message,
+      title:title||undefined,
+      message:message||undefined,
       type:'alert-danger',
     });
   },
   warning:function(title,message){
     new AlertView({
-      title:title,
-      message:message,
+      title:title||undefined,
+      message:message||undefined,
       type:'alert-warning',
     });
   },
   info:function(title,message){
     new AlertView({
-      title:title,
-      message:message,
+      title:title||undefined,
+      message:message||undefined,
       type:'alert-info',
     });
   }

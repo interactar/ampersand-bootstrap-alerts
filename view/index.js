@@ -7,8 +7,9 @@ module.exports = View.extend({
   autoRender:true,
   props:{
     type:['string',true,'alert-success'],
-    message:['string',true,'the message'],
+    message:['string',false],
     title:['string',false],
+    timeout:['number',false,3]
   },
   derived:{
     typeClass:{
@@ -30,6 +31,12 @@ module.exports = View.extend({
   render:function(){
     this.renderWithTemplate(this);
     $('body .alerts-container').append( this.el );
-    $('.alert').slideDown();
+
+    var $alert = $('.alert');
+    $alert.slideDown();
+
+    window.setTimeout(function(){
+      $alert.slideUp();
+    },this.timeout * 1000);
   }
 });
